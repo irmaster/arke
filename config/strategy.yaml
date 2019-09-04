@@ -3,27 +3,15 @@ strategy:
   volume_ratio: 0.1
   target:
     driver: rubykube
-    market: 'FTHUSD'
-    host: "http://www.devkube.com"
-    key: ""
-    secret: ""
+    market: 'RVGETH'
+    host: "https://www.rvgtrade.io"
+    key: "LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUEyQjgyT3dFMnNtVTNOQ2R3bjBkWQpvZnpoYWJ2b3QxVkJ4UEdMYWhwZWRUU0xLWmFGcndKV3FQOXlrSGpzSUdnZzEzZFVyV1BFQlpKSFlqdjF2cGpjCmpjL0tlUXl4YU9wWGZtMC9LdHpIV2d4UytYaU45Y0pqaVJjdnhHUUVZd3U5cFVMS203Ui9RV2VDNGp1ODJzT0kKSU9HbTV1Q2dMby8vRVpBUk1LcjdUMzJtUG5WaUZVRk1ENkZxMldEc1l4YmxObDJVa2h3WUt3eUZ0QWVLUUY3Nwp3S0l6N285NDV1aSs1ckJldGpxY0gybE5LWXJJRmZWZU93OU50anBnS2ZrQzMwTTBneFlLN1dVaUJGeHVWc05KCm1YaUwwZ0hLbG91bzJseHlJb1FwRUJTUFdLRW5MTjNPNGNwQk55NUp6dUhTUHhBNU9TWGNYNjN2NzVieWlmRDUKb3dJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg"
+    secret: "ab80e2c843861c4d23e63f5472cd1c9ee6f55e388863e21f22b03a9093977f29"
     rate_limit: 1
   sources:
-    - driver: bitfaker
-      market: 'tETHUSD'
-      host: "api.bitfinex.com"
-      key: ""
-      secret: ""
-      rate_limit: 0.2
-    - driver: bitfinex
-      market: 'tETHUSD'
-      host: "api.bitfinex.com"
-      key: ""
-      secret: ""
-      rate_limit: 0.2
     - driver: binance
       market: 'ETHUSDT'
       host: "api.binance.com"
-      key: ""
-      secret: ""
+      key: "S5TpdJIY54So5u2r9pasj4cE6wxOxD1ptci3xywMq5ao9h5vSA8chq7FiFSgkFAg"
+      secret: "1xI841d2DHY7w2Y76zZ2J5zEKHDfjeo7Cbr1sQU7CHrdNY15RNhsW0eHDgc9Wp9h"
       rate_limit: 0.2
