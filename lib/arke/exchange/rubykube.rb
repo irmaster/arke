@@ -73,13 +73,17 @@ module Arke::Exchange
     # Helper method, generates headers to authenticate with +api_key+
     def generate_headers
       nonce = Time.now.to_i.to_s
-      {
+      sign = OpenSSL::HMAC.hexdigest('SHA256', @secret, nonce + @api_key)
+      header = {
           'X-Auth-Apikey' => @api_key,
           'X-Auth-Nonce' => nonce,
-          'X-Auth-Signature' => OpenSSL::HMAC.hexdigest('SHA256', @secret, nonce + @api_key),
-          'Authorization' => 'Bearer ' + @private,
+          'X-Auth-Signature' => sign,
+          :Authorization => 'Bearer ' + @private,
           'Content-Type' => 'application/json'
       }
+      Arke::Log.debug "sign: #{sign}"
+      Arke::Log.debug "header: #{header}"
+      header
     end
   end
 end
