@@ -6,12 +6,13 @@ module Arke::Exchange
     attr_accessor :timer
 
     def initialize(opts)
-      @market  = opts['market']
-      @driver  = opts['driver']
+      @market = opts['market']
+      @driver = opts['driver']
       @api_key = opts['key']
-      @secret  = opts['secret']
-      @queue   = EM::Queue.new
-      @timer   = nil
+      @secret = opts['secret']
+      @private = opts['private']
+      @queue = EM::Queue.new
+      @timer = nil
 
       rate_limit = opts['rate_limit'] || 1.0
       rate_limit = 1.0 if rate_limit <= 0
@@ -20,7 +21,8 @@ module Arke::Exchange
       @open_orders = Arke::OpenOrders.new(@market)
     end
 
-    def start; end
+    def start;
+    end
 
     def print
       return unless @orderbook

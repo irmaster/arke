@@ -77,6 +77,7 @@ module Arke::Exchange
           'X-Auth-Apikey' => @api_key,
           'X-Auth-Nonce' => nonce,
           'X-Auth-Signature' => OpenSSL::HMAC.hexdigest('SHA256', @secret, nonce + @api_key),
+          'Authorization' => 'Bearer ' + @private,
           'Content-Type' => 'application/json'
       }
     end
