@@ -27,13 +27,13 @@ module Arke::Exchange
     # * creates +order+ via RestApi
     def create_order(order)
       response = post(
-        'market/orders',
-        {
-          market: order.market.downcase,
-          side:   order.side.to_s,
-          volume: order.amount,
-          price:  order.price
-        }
+          'orders',
+          {
+              market: order.market.downcase,
+              side: order.side.to_s,
+              volume: order.amount,
+              price: order.price
+          }
       )
       @open_orders.add_order(order, response.env.body['id']) if response.env.status == 201 && response.env.body['id']
 
@@ -44,7 +44,10 @@ module Arke::Exchange
     # * cancels +order+ via RestApi
     def stop_order(id)
       response = post(
-        "market/orders/#{id}/cancel"
+          "order/delete",
+          {
+              id: id
+          }
       )
       @open_orders.remove_order(id)
 
@@ -71,10 +74,10 @@ module Arke::Exchange
     def generate_headers
       nonce = Time.now.to_i.to_s
       {
-        'X-Auth-Apikey' => @api_key,
-        'X-Auth-Nonce' => nonce,
-        'X-Auth-Signature' => OpenSSL::HMAC.hexdigest('SHA256', @secret, nonce + @api_key),
-        'Content-Type' => 'application/json'
+          'X-Auth-Apikey' => @api_key,
+          'X-Auth-Nonce' => nonce,
+          'X-Auth-Signature' => OpenSSL::HMAC.hexdigest('SHA256', @secret, nonce + @api_key),
+          'Content-Type' => 'application/json'
       }
     end
   end
