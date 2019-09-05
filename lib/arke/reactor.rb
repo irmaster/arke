@@ -72,8 +72,8 @@ module Arke
 
     def schedule(action)
       case action.type
-      when :ping
-        @target.ping
+      # when :ping
+      #   @target.ping
       when :order_create
         @dax[action.destination].create_order(action.params[:order])
       when :order_stop

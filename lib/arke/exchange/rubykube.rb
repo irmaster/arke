@@ -27,7 +27,7 @@ module Arke::Exchange
     # * creates +order+ via RestApi
     def create_order(order)
       response = post(
-        'peatio/market/orders',
+        'market/orders',
         {
           market: order.market.downcase,
           side:   order.side.to_s,
@@ -44,7 +44,7 @@ module Arke::Exchange
     # * cancels +order+ via RestApi
     def stop_order(id)
       response = post(
-        "peatio/market/orders/#{id}/cancel"
+        "market/orders/#{id}/cancel"
       )
       @open_orders.remove_order(id)
 
